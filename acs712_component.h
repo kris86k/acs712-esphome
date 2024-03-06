@@ -2,7 +2,7 @@
 
 class ACS712Sensor : public PollingComponent {
    public:
-    ACS712 *ACS = new ACS712(A0, 3.3, 1023, 66);
+    ACS712 *ACS = new ACS712(33, 3.3, 1023, 66);
     Sensor *current_sensor = new Sensor();
     Sensor *power_sensor = new Sensor();
 
@@ -29,6 +29,6 @@ class ACS712Sensor : public PollingComponent {
         //ESP_LOGD("acs712", "Time: %d A: ", duration, amps);
 
         current_sensor->publish_state(amps);
-        power_sensor->publish_state(amps * 220);
+        power_sensor->publish_state(amps * 1);
     }
 };
